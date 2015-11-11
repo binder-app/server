@@ -8,3 +8,7 @@
 ## Running
 
 1. `node app.js`
+
+## Environment variables
+
+Supported environment variables are `PORT` and `DB`.
