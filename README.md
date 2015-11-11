@@ -3,8 +3,196 @@
 ## Setup
 
 1. Install [NodeJS](https://nodejs.org/)
-2. `npm install`
+2. Run `npm install`
+3. You're good to go!
 
 ## Running
 
-1. `node app.js`
+You can launch the application with `npm start`. If you're a developer, it is slightly faster and less verbose to launch the application directly with `node server`.
+
+## Environment variables
+
+Supported environment variables are:
+
+  * `PORT`, an integer that defaults to 8080
+  * `DB`, a standard rethinkdb database URL that defaults to localhost
+
+## Required Headers
+
+Any request to the API requires an `Authorization` header. This header is designed to be your unique android device ID. You must pass it as a bearer token, for example: `Authorization: Bearer 12345-deafde-adfff-23123`.
+
+## Supported Routes
+
+### Profile route
+
+Route: `PUT /api/profiles/:id`
+
+Note: This route allows you to update your profile. Please note you are only able to update your own profile, so the `id` parameter should be the same as your bearer token.
+
+Request:
+```javascript
+PUT http://localhost:8080/api/profiles/123
+{
+  "bio": "My name is Chris, I'm a fourth year BCS student who...",
+  "name": "Christopher Foster",
+  "courses": [
+    "COMP2160",
+    "COMP3550",
+    "COMP4550"
+  ]
+}
+```
+
+Response:
+```javascript
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 83
+Content-Type: application/json; charset=utf-8
+Date: Wed, 11 Nov 2015 19:47:58 GMT
+ETag: W/"53-Yvzyu3ojl5BZCvOJffzKaw"
+X-Powered-By: Express
+
+{
+  "id": "123",
+  "bio": "My name is Chris, I'm a fourth year BCS student who...",
+  "name": "Christopher Foster",
+  "courses": [
+    "COMP2160",
+    "COMP3550",
+    "COMP4550"
+  ]
+}
+```
+
+### Suggestions Route
+
+Route: `GET /api/suggestions`
+
+Note: Returns a list of suggested profiles you may like or dislike.
+
+Request:
+```javascript
+GET http://localhost:8080/api/suggestions
+```
+
+Response:
+```
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 88
+Content-Type: application/json; charset=utf-8
+Date: Wed, 11 Nov 2015 19:48:54 GMT
+ETag: W/"58-5pFwNj3J+fMAO/ihu0IyHw"
+X-Powered-By: Express
+
+[
+  {
+    "bio": "My name is John Doe", 
+    "courses": [
+      "COMP2160", 
+      "COMP3333"
+    ], 
+    "id": "555", 
+    "name": "John Doe"
+  }
+]
+```
+
+### Like Route
+
+Route: `POST /api/likes`
+
+Note: Create a new like entry. `to` is the profile id of the user that you like.
+
+Request:
+```javascript
+POST http://localhost:8080/api/likes
+{
+  "to": "123"
+}
+```
+
+Response:
+```
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 88
+Content-Type: application/json; charset=utf-8
+Date: Wed, 11 Nov 2015 19:48:54 GMT
+ETag: W/"58-5pFwNj3J+fMAO/ihu0IyHw"
+X-Powered-By: Express
+
+{
+  "id": "1378eb2c-b370-4347-bcf9-f099cdc2251a", 
+  "from": "555", 
+  "to": "123", 
+  "type": "like"
+}
+```
+
+### Dislike Route
+
+Route: `POST /api/dislikes`
+
+Note: Create a new dislike entry. `to` is the profile id of the user that you dislike. The `from` in the route repsonse will be your own user id.
+
+Request:
+```javascript
+POST http://localhost:8080/api/dislikes
+{
+  "to": "123"
+}
+```
+
+Response:
+```
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 88
+Content-Type: application/json; charset=utf-8
+Date: Wed, 11 Nov 2015 19:48:54 GMT
+ETag: W/"58-5pFwNj3J+fMAO/ihu0IyHw"
+X-Powered-By: Express
+
+{
+  "id": "1378eb2c-b370-4347-bcf9-f099cdc2251a", 
+  "from": "555", 
+  "to": "123", 
+  "type": "dislike"
+}
+```
+
+### Matches Route
+
+Route: `GET /api/matches`
+
+Note: Returns a list of profiles that you like and also like you
+
+Request:
+```javascript
+GET http://localhost:8080/api/matches
+```
+
+Response:
+```
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Length: 88
+Content-Type: application/json; charset=utf-8
+Date: Wed, 11 Nov 2015 19:48:54 GMT
+ETag: W/"58-5pFwNj3J+fMAO/ihu0IyHw"
+X-Powered-By: Express
+
+[
+  {
+    "bio": "My name is John Doe", 
+    "courses": [
+      "COMP2160", 
+      "COMP3333"
+    ], 
+    "id": "555", 
+    "name": "John Doe"
+  }
+]
+```
