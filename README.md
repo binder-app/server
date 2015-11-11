@@ -26,6 +26,7 @@ Any request to the API requires an `Authorization` header. This header is design
 ### Profile route
 
 Route: `PUT /api/profiles/:id`
+
 Note: This route allows you to update your profile. Please note you are only able to update your own profile, so the `id` parameter should be the same as your bearer token.
 
 Request:
@@ -67,6 +68,7 @@ X-Powered-By: Express
 ### Suggestions Route
 
 Route: `GET /api/suggestions`
+
 Note: Returns a list of suggested profiles you may like or dislike.
 
 Request:
@@ -100,6 +102,7 @@ X-Powered-By: Express
 ### Like Route
 
 Route: `POST /api/likes`
+
 Note: Create a new like entry. `to` is the profile id of the user that you like.
 
 Request:
@@ -131,6 +134,7 @@ X-Powered-By: Express
 ### Dislike Route
 
 Route: `POST /api/dislikes`
+
 Note: Create a new dislike entry. `to` is the profile id of the user that you dislike. The `from` in the route repsonse will be your own user id.
 
 Request:
@@ -162,6 +166,7 @@ X-Powered-By: Express
 ### Matches Route
 
 Route: `GET /api/matches`
+
 Note: Returns a list of profiles that you like and also like you
 
 Request:
