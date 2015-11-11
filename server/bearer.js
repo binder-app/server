@@ -17,8 +17,10 @@ function parser(string) {
 }
 
 function middleware(req, res, next) {
-  var bearer = parser(req.get('Authorization'));
-  if (!bearer) return res.status(403).send(error);
-  req.user = bearer;
-  next();
+  return () => {
+    var bearer = parser(req.get('Authorization'));
+    if (!bearer) return res.status(403).send(error);
+    req.user = bearer;
+    next();
+  };
 }
