@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/binder-app/server#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "rethinkdbdash": "^2.1.17"
   }
 }
