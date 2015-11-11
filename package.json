@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "Server for binder app",
   "scripts": {
-    "start": "node server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "forever -f --uid binder server &",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stop": "forever stop binder"
   },
   "repository": {
     "type": "git",
