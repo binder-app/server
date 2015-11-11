@@ -10,16 +10,17 @@ var error = {
 };
 
 function parser(string) {
+  string = string || '';
   var expected = 'Bearer ';
   var token = string.substr(expected.length);
   var prefix = string.substr(0, expected.length);
   return prefix == expected && !!token ? token : null;
 }
 
-function middleware(req, res, next) {
-  return () => {
+function middleware() {
+  return (req, res, next) => {
     var bearer = parser(req.get('Authorization'));
-    if (!bearer) return res.status(403).send(error);
+    if (!bearer) return res.status(401).send(error);
     req.user = bearer;
     next();
   };

@@ -3,7 +3,8 @@
  * Rethink database cursor
  */
 
-var r = require('rethinkdbdash');
+var r   = require('rethinkdbdash');
+var url = require('url');
 
 var opts = {};
 if (process.env.DB) {
