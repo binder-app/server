@@ -18,6 +18,7 @@ function put(req, res, next) {
     bio     : req.body.bio || '',
     program : req.body.program || '',
     year    : req.body.year || 0,
+    phone   : req.body.phone || '',
     courses : req.body.courses || []
   };
   r.table('Profile')
