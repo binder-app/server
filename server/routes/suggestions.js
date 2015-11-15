@@ -1,4 +1,3 @@
-
 /* Suggestions
  * Return user profiles to the user
  */
@@ -20,6 +19,9 @@ function get(req, res, next) {
     .eq(0);
   })
   .then(users => {
+    users.forEach(user => {
+      delete user.phone;
+    });
     res.send(users);
   })
   .catch(next);
