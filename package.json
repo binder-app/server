@@ -5,6 +5,7 @@
   "scripts": {
     "start": "forever -f --uid binder server &",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "cleartables": "node task/clearTables",
     "stop": "forever stop binder"
   },
   "repository": {

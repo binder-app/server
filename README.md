@@ -17,6 +17,14 @@ Supported environment variables are:
   * `PORT`, an integer that defaults to 8080
   * `DB`, a standard rethinkdb database URL that defaults to localhost
 
+## Supported Tasks
+
+The follow tasks exist:
+
+  * `cleartables`, clears all database data
+
+You can run a script with `npm run <scriptname>` in the project directory.
+
 ## Required Headers
 
 Any request to the API requires an `Authorization` header. This header is designed to be your unique android device ID. You must pass it as a bearer token, for example: `Authorization: Bearer 12345-deafde-adfff-23123`.
