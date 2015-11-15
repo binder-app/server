@@ -33,8 +33,11 @@ Request:
 ```javascript
 PUT http://localhost:8080/api/profiles/123
 {
-  "bio": "My name is Chris, I'm a fourth year BCS student who...",
   "name": "Christopher Foster",
+  "bio": "My name is Chris, I'm a fourth year BCS student who...",
+  "program": "Computer Science",
+  "phone": "(250) 572-7938",
+  "year": 4,
   "courses": [
     "COMP2160",
     "COMP3550",
@@ -55,8 +58,11 @@ X-Powered-By: Express
 
 {
   "id": "123",
-  "bio": "My name is Chris, I'm a fourth year BCS student who...",
   "name": "Christopher Foster",
+  "bio": "My name is Chris, I'm a fourth year BCS student who...",
+  "program": "Computer Science", 
+  "phone": "(250) 572-7938", 
+  "year": 4,
   "courses": [
     "COMP2160",
     "COMP3550",
@@ -69,7 +75,7 @@ X-Powered-By: Express
 
 Route: `GET /api/suggestions`
 
-Note: Returns a list of suggested profiles you may like or dislike.
+Note: Returns a list of suggested profiles you may like or dislike. The suggestions route does not return phone numbers for privacy reasons. The suggestions route also does not return your own profile, or any profiles that you have already placed a Like or Dislike for.
 
 Request:
 ```javascript
@@ -88,13 +94,16 @@ X-Powered-By: Express
 
 [
   {
-    "bio": "My name is John Doe", 
+    "id": "123",
+    "name": "Christopher Foster",
+    "bio": "My name is Chris, I'm a fourth year BCS student who...",
+    "program": "Computer Science", 
+    "year": 4,
     "courses": [
-      "COMP2160", 
-      "COMP3333"
-    ], 
-    "id": "555", 
-    "name": "John Doe"
+      "COMP2160",
+      "COMP3550",
+      "COMP4550"
+    ]
   }
 ]
 ```
@@ -186,13 +195,17 @@ X-Powered-By: Express
 
 [
   {
-    "bio": "My name is John Doe", 
+    "id": "123",
+    "name": "Christopher Foster",
+    "bio": "My name is Chris, I'm a fourth year BCS student who...",
+    "program": "Computer Science", 
+    "phone": "(250) 572-7938", 
+    "year": 4,
     "courses": [
-      "COMP2160", 
-      "COMP3333"
-    ], 
-    "id": "555", 
-    "name": "John Doe"
+      "COMP2160",
+      "COMP3550",
+      "COMP4550"
+    ]
   }
 ]
 ```
