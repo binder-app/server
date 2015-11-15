@@ -27,7 +27,7 @@ Any request to the API requires an `Authorization` header. This header is design
 
 Route: `PUT /api/profiles/:id`
 
-Note: This route allows you to update your profile. Please note you are only able to update your own profile, so the `id` parameter should be the same as your bearer token.
+Note: This route allows you to update your profile. Please note you are only able to update your own profile, so the `id` parameter should be the same as your bearer token. The profile route requires a phone number so that you can be matched.
 
 Request:
 ```javascript
