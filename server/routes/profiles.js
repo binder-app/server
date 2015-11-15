@@ -16,6 +16,8 @@ function put(req, res, next) {
     id      : req.user,
     name    : req.body.name || '',
     bio     : req.body.bio || '',
+    program : req.body.program || '',
+    year    : req.body.year || 0,
     courses : req.body.courses || []
   };
   r.table('Profile')
