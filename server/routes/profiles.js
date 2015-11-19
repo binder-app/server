@@ -7,7 +7,7 @@ var r = require('../r');
 
 module.exports.put = put;
 
-const photoLimit = 2*1024*1024;
+const photoLimit = 3*1024*1024;
 
 function put(req, res, next) {
   if (req.params.id != req.user) {
