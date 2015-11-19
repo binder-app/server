@@ -35,7 +35,7 @@ Any request to the API requires an `Authorization` header. This header is design
 
 Route: `PUT /api/profiles/:id`
 
-Note: This route allows you to update your profile. Please note you are only able to update your own profile, so the `id` parameter should be the same as your bearer token. The profile route requires a phone number so that you can be matched.
+Note: This route allows you to update your profile. Please note you are only able to update your own profile, so the `id` parameter should be the same as your bearer token. The profile route requires a phone number so that you can be matched. The photo parameter is limited to 3MB in size.
 
 Request:
 ```javascript
@@ -43,6 +43,7 @@ PUT http://localhost:8080/api/profiles/123
 {
   "name": "Christopher Foster",
   "bio": "My name is Chris, I'm a fourth year BCS student who...",
+  "photo": "data:image/png;base64,iVBORw0K...Ggg==",
   "program": "Computer Science",
   "phone": "(250) 572-7938",
   "year": 4,
@@ -68,6 +69,7 @@ X-Powered-By: Express
   "id": "123",
   "name": "Christopher Foster",
   "bio": "My name is Chris, I'm a fourth year BCS student who...",
+  "photo": "data:image/png;base64,iVBORw0K...Ggg==",
   "program": "Computer Science", 
   "phone": "(250) 572-7938", 
   "year": 4,
@@ -105,6 +107,7 @@ X-Powered-By: Express
     "id": "123",
     "name": "Christopher Foster",
     "bio": "My name is Chris, I'm a fourth year BCS student who...",
+    "photo": "data:image/png;base64,iVBORw0K...Ggg==",
     "program": "Computer Science", 
     "year": 4,
     "courses": [
@@ -206,6 +209,7 @@ X-Powered-By: Express
     "id": "123",
     "name": "Christopher Foster",
     "bio": "My name is Chris, I'm a fourth year BCS student who...",
+    "photo": "data:image/png;base64,iVBORw0K...Ggg==",
     "program": "Computer Science", 
     "phone": "(250) 572-7938", 
     "year": 4,
